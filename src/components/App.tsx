@@ -49,13 +49,16 @@ const App = () => {
       case 'happy':
         return getByCustomSearch('gifs', 'search', 'happy') 
       default:
-        break;
+        return
     }
   }
 
   // mount
   useEffect(() => {
     getTrending('gifs', 'trending')
+    return() => {
+      setData({data: []})
+    }
   },[getTrending])
 
   return(
@@ -64,7 +67,7 @@ const App = () => {
         <h1 className="text-white">Gilphy App</h1>
       </Header>
       <Layout>
-        <Slider chooseCategory={chooseCategory} />
+        <Slider chooseCategory={(e) => chooseCategory(e)} />
         <Layout style={{ padding: '0 24px 24px' }}>
           <ViewContent data={data}/>
         </Layout>
