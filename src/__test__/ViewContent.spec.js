@@ -1,6 +1,6 @@
 import React from 'react';
 import ViewContent from '../components/ViewContent'
-import { render, fireEvent, screen, waitFor, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 const mockData = [
     {
@@ -15,9 +15,8 @@ const mockData = [
 
 describe('View Content', () => {
   it('should render the proper structure', async () => {
-    const { debug, getByAltText } = render(<ViewContent data={mockData} />)
+    const { getByAltText } = render(<ViewContent data={mockData} />)
     expect(getByAltText(/test/i)).toBeInTheDocument()
     expect(getByAltText(/test/i)).toHaveAttribute('src', 'testimage.url')
-    debug()
   })
 })
